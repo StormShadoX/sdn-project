@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  ryu:
+    image: osrg/ryu
+    container_name: ryu-controller
+    ports:
+      - "6653:6653"
+      - "8080:8080"
+    command: ryu-manager ryu.app.simple_switch_13
+
+  host1:
+    image: ubuntu
+    container_name: host1
+    tty: true
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+  host2:
+    image: ubuntu
+    container_name: host2
+    tty: true
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
